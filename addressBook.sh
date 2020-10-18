@@ -135,6 +135,22 @@ function edit()
 		echo "Error : Email not exist!!!"
 	fi
 }
+function delete()
+{
+	echo "Enter email"
+	read email
+	len=`cat addressbook1.csv | grep $email | wc -w`
+	if [ $len -gt 0 ]
+	then
+		old=`cat addressbook1.csv | grep $email`
+		sed -i s/"$old"//g addressbook1.csv
+		sed -i /^$/d addressbook1.csv
+		echo ""
+		echo "Record Deleted!!!"
+	else
+		echo "Error : Email not exist!!!"
+	fi
+}
 while [ true ]
 do
 	echo ""
