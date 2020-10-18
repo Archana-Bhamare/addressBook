@@ -35,6 +35,11 @@ function name(){
 	if [ $? -eq 0 ]
 	then
 		echo "Valid Email"
+		len=`cat addressbook1.csv | grep $email | wc -w`
+		if [ $len -gt 0 ]
+		then
+			echo "Error : Email already exist!!!"
+		fi
 	else
 		echo "Please enter valid email id"
 		read -p "Enter Email : " email	
@@ -90,6 +95,24 @@ function displayAddressBook()
 	else
 		echo "Error : File is not exist!!!"
 	fi
+}
+insert()
+{
+	while true
+	do
+	name
+	record=`echo $fname $lname $mnum $email $city $state $zip`
+	echo $record >> addressbook1.csv
+	echo ""
+	echo "Record Inserted..."
+	read -p "1) Add 2) Exit " var
+	if [ $var == 1 ]
+	then
+		continue
+	else
+		break
+	fi
+	done
 }
 while [ true ]
 do
