@@ -1,5 +1,5 @@
 #!/bin/bash
-name(){
+function name(){
 	patName="^[A-Z]{1}[a-z]{3,}$"
 	patMob="^[91]{2}[ ]?[0-9]{10}$"
 	patMail="^[a-zA-Z0-9]+([.+-_][a-z-A-Z0-9]+)*@[a-zA-Z0-9]+.[a-z]{2,3}([.][a-z]{2})*$"
@@ -66,7 +66,7 @@ name(){
 		read -p "Enter Zip code : " zip	
 	fi
 }
-createAddBook()
+function createAddBook()
 {
 	read -p "Enter address book name : " ab
 	res=`ls | grep $ab | wc -w`
@@ -76,6 +76,19 @@ createAddBook()
 	else
 		touch $ab
 		echo "Address Book created..."
+	fi
+}
+function displayAddressBook()
+{
+	echo "Enter address book name : "
+	read ab
+	res=`ls | grep $ab | wc -w`
+	if [ $res -gt 0 ]
+	then
+		echo ""
+		cat $ab
+	else
+		echo "Error : File is not exist!!!"
 	fi
 }
 while [ true ]
