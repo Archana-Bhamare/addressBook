@@ -96,7 +96,7 @@ function displayAddressBook()
 		echo "Error : File is not exist!!!"
 	fi
 }
-insert()
+function insert()
 {
 	while true
 	do
@@ -113,6 +113,27 @@ insert()
 		break
 	fi
 	done
+}
+function edit()
+{
+	echo "Enter email"
+	read email
+	len=`cat addressbook1.csv | grep $email | wc -w`
+	if [ $len -gt 0 ]
+	then
+		name
+		newRecord=`echo $fname $lname $mnum $email $city $state $zip`
+		oldRecord=`cat addressbook1.csv | grep $email`
+		echo ""
+		echo "New Record : $newRecord"
+		echo ""
+		echo "Old Record : $oldRecord"
+		sed -i s/"$oldRecord"/"$newRecord"/g addressbook1.csv
+		echo ""
+		echo "Record Modified...."
+	else
+		echo "Error : Email not exist!!!"
+	fi
 }
 while [ true ]
 do
