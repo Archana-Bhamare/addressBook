@@ -66,4 +66,29 @@ name(){
 		read -p "Enter Zip code : " zip	
 	fi
 }
-name
+while [ true ]
+do
+	echo ""
+	echo "****************MENU****************"
+	echo "1.Create Address Book"
+	echo "2. displayAddressBook"
+	echo "3. Insert"
+	echo "4. Edit"
+	echo "5. Delete Record"
+	echo "6. SearchByName"
+	echo "7. SearchByZip"
+	echo "8. Exit"
+	echo "Enter Your choice"
+	read choice
+	case $choice in
+		1) createAddBook ;;
+		2) displayAddressBook ;;
+		3) insert ;;
+		4) edit ;;
+		5) delete ;;
+		6) searchByName ;;
+		7) searchByZip ;;
+		8) exit ;;
+		*) echo "Please enter valid choice!!!"
+	esac
+done
