@@ -151,6 +151,19 @@ function delete()
 		echo "Error : Email not exist!!!"
 	fi
 }
+function searchByName()
+{
+	echo "Enter Name"
+	read fname
+	len=`cat addressbook1.csv | grep $fname | wc -w`
+	if [ $len -gt 0 ]
+	then
+		echo ""
+		cat addressbook1.csv | grep $fname
+	else
+		echo "Error : Name not Found!!!"
+	fi
+}
 while [ true ]
 do
 	echo ""
