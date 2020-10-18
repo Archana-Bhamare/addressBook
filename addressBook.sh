@@ -164,6 +164,19 @@ function searchByName()
 		echo "Error : Name not Found!!!"
 	fi
 }
+function searchByZip()
+{
+	echo "Enter Zip Code"
+	read zip
+	len=`cat addressbook1.csv | grep $zip | wc -w`
+	if [ $len -gt 0 ]
+	then
+		echo ""
+		cat addressbook1.csv | grep $zip
+	else
+		echo "Error : Zip code not Found!!!"
+	fi
+}
 while [ true ]
 do
 	echo ""
