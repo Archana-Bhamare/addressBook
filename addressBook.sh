@@ -66,11 +66,23 @@ name(){
 		read -p "Enter Zip code : " zip	
 	fi
 }
+createAddBook()
+{
+	read -p "Enter address book name : " ab
+	res=`ls | grep $ab | wc -w`
+	if [ $res -gt 0 ]
+	then
+		echo "Error : File is already exist!!!"
+	else
+		touch $ab
+		echo "Address Book created..."
+	fi
+}
 while [ true ]
 do
 	echo ""
 	echo "****************MENU****************"
-	echo "1.Create Address Book"
+	echo "1. Create Address Book"
 	echo "2. displayAddressBook"
 	echo "3. Insert"
 	echo "4. Edit"
